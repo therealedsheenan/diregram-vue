@@ -9,7 +9,15 @@ const Api = {
   init() {
     Vue.use(VueAxios, axios);
     Vue.axios.defaults.baseURL = API_URL;
-  }
+  },
+
+  get(resource: string, slug = '') {
+    return Vue.axios
+      .get(`${resource}/${slug}`)
+      .catch((error: Error) => {
+        throw new Error(`[RWV] ApiService ${error}`);
+      });
+  },
 };
 
 export default Api;
