@@ -16,9 +16,18 @@
 </template>
 
 <script lang="ts">
+  import { FETCH_ALL_POSTS } from '@/store/types/actions';
   export default {
     name: 'HelloWorld',
-    props: {}
+    props: {},
+    mounted () {
+      this.fetchAllPosts();
+    },
+    methods: {
+      fetchAllPosts () {
+        this.$store.dispatch(FETCH_ALL_POSTS);
+      },
+    }
   }
 </script>
 
