@@ -2,7 +2,7 @@ import Vue from 'vue';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
 
-const API_URL = "http://localhost:3000"; // TODO: change to correct api server address
+const API_URL = "http://localhost:8000/api/1.0/"; // TODO: change to correct api server address
 
 const Api = {
 
