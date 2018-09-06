@@ -1,15 +1,2 @@
-
-const state = {
-  works: [],
-  isLoading: true,
-
-};
-
-const getters = {
-
-};
-
-export default {
-  state,
-  getters
-};
+// posts
+export const FETCH_ALL_POSTS =  'fetchAllPosts';
