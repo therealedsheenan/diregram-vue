@@ -3,15 +3,17 @@ import * as acts from "../types/actions";
 import * as muts from "../types/mutations";
 
 const state = {
-  posts: [],
+  data: [],
   isLoading: true,
-
 };
 
 const getters = {
   isLoading(state: any) {
     return state.isLoading;
   },
+  posts(state: any) {
+    return state.data;
+  }
 };
 
 const actions = {
@@ -33,7 +35,7 @@ const mutations = {
     state.isLoading = true;
   },
   [muts.ALL_POSTS_SUCCESS](state: any, payload) {
-    state.posts = payload.data.posts;
+    state.data = payload.data.posts;
     state.isLoading = false;
   },
 };
