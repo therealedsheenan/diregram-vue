@@ -7,18 +7,18 @@
         </div>
         <v-slide-y-transition mode="out-in">
           <v-layout column align-center>
-            <!--<v-card v-for="post in posts">-->
-              <!--<v-img-->
-                <!--src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"-->
-                <!--aspect-ratio="2.75"-->
-              <!--&gt;</v-img>-->
-              <!--<v-card-title primary-title>-->
-                <!--<div>-->
-                  <!--<h3 class="headline mb-0">{{ post.title }}</h3>-->
-                  <!--<div>{{ post.caption }}</div>-->
-                <!--</div>-->
-              <!--</v-card-title>-->
-            <!--</v-card>-->
+            <v-card v-for="post in posts">
+              <v-img
+                src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
+                aspect-ratio="2.75"
+              ></v-img>
+              <v-card-title primary-title>
+                <div>
+                  <h3 class="headline mb-0">{{ post.title }}</h3>
+                  <div>{{ post.caption }}</div>
+                </div>
+              </v-card-title>
+            </v-card>
           </v-layout>
         </v-slide-y-transition>
       </v-flex>
