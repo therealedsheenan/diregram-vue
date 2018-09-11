@@ -11,7 +11,8 @@ import {
   VToolbar,
   transitions,
   VCard,
-  VImg
+  VImg,
+  VAvatar
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
 
@@ -27,6 +28,7 @@ Vue.use(Vuetify, {
     VToolbar,
     VCard,
     VImg,
+    VAvatar,
     transitions
   },
   theme: {

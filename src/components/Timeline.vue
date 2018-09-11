@@ -7,19 +7,29 @@
         </div>
         <v-slide-y-transition mode="out-in">
           <v-layout column align-center>
-            <router-link to="/" class="card-link">
-              <v-card v-for="post in posts">
+            <v-card v-for="post in posts" class="mt-4">
+              <router-link to="/" class="card-link">
+                <div class="card-author">
+                  <v-avatar
+                    :tile="tile"
+                    :size="avatarSize"
+                    color="grey lighten-4"
+                  >
+                    <img src="@/assets/logo.png" alt="avatar">
+                  </v-avatar>
+                  <h3>{{ post.owner.username }}</h3>
+                </div>
                 <v-img
                   v-bind:src="uploadAddress + post.image.image"
                 ></v-img>
-                <v-card-title primary-title>
+                <v-card-title>
                   <div>
-                    <h3 class="headline mb-0">{{ post.title }}</h3>
+                    <h3 class="headline mt-0">{{ post.title }}</h3>
                     <div>{{ post.caption }}</div>
                   </div>
                 </v-card-title>
-              </v-card>
-            </router-link>
+              </router-link>
+            </v-card>
           </v-layout>
         </v-slide-y-transition>
       </v-flex>
@@ -66,12 +76,29 @@
     margin: 0 10px;
   }
   a {
-    color: #42b983;
+    color: #666;
   }
 
   .card-link {
     display: block;
     width: 100%;
     text-decoration: none;
+  }
+
+  .v-card__title {
+    text-align: left;
+  }
+
+  .card-author {
+    padding: 10px 20px;
+    display: flex;
+  }
+
+  .card-author h3 {
+    margin-left: 10px;
+    margin-top: 0;
+    text-align: left;
+    vertical-align: middle;
+    line-height: 2.6;
   }
 </style>
