@@ -7,18 +7,19 @@
         </div>
         <v-slide-y-transition mode="out-in">
           <v-layout column align-center>
-            <v-card v-for="post in posts">
-              <v-img
-                src="https://cdn.vuetifyjs.com/images/cards/desert.jpg"
-                aspect-ratio="2.75"
-              ></v-img>
-              <v-card-title primary-title>
-                <div>
-                  <h3 class="headline mb-0">{{ post.title }}</h3>
-                  <div>{{ post.caption }}</div>
-                </div>
-              </v-card-title>
-            </v-card>
+            <router-link to="/" class="card-link">
+              <v-card v-for="post in posts">
+                <v-img
+                  v-bind:src="uploadAddress + post.image.image"
+                ></v-img>
+                <v-card-title primary-title>
+                  <div>
+                    <h3 class="headline mb-0">{{ post.title }}</h3>
+                    <div>{{ post.caption }}</div>
+                  </div>
+                </v-card-title>
+              </v-card>
+            </router-link>
           </v-layout>
         </v-slide-y-transition>
       </v-flex>
@@ -31,7 +32,9 @@
   import { FETCH_ALL_POSTS } from '@/store/types/actions';
   export default {
     name: 'Timeline',
-    props: {},
+    data: () => ({
+      uploadAddress: "http://localhost:8000/"
+    }),
     mounted () {
       this.fetchAllPosts();
     },
@@ -64,5 +67,11 @@
   }
   a {
     color: #42b983;
+  }
+
+  .card-link {
+    display: block;
+    width: 100%;
+    text-decoration: none;
   }
 </style>
