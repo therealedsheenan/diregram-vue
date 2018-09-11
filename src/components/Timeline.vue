@@ -1,5 +1,5 @@
 <template>
-  <v-container grid-list-xl text-xs-center>
+  <v-container grid-list-xs>
     <v-layout row wrap>
       <v-flex xs10 offset-xs1>
         <div v-if="isLoading" class="article-preview">
@@ -8,16 +8,16 @@
         <v-slide-y-transition mode="out-in">
           <v-layout column align-center>
             <v-card v-for="post in posts" class="mt-4">
-              <router-link to="/" class="card-link">
+              <div class="card-link">
                 <div class="card-author">
                   <v-avatar
-                    :tile="tile"
-                    :size="avatarSize"
                     color="grey lighten-4"
                   >
                     <img src="@/assets/logo.png" alt="avatar">
                   </v-avatar>
-                  <h3>{{ post.owner.username }}</h3>
+                  <router-link v-bind:to="'/profile/' + post.owner._id">
+                    <h3>{{ post.owner.username }}</h3>
+                  </router-link>
                 </div>
                 <v-img
                   v-bind:src="uploadAddress + post.image.image"
@@ -28,7 +28,7 @@
                     <div>{{ post.caption }}</div>
                   </div>
                 </v-card-title>
-              </router-link>
+              </div>
             </v-card>
           </v-layout>
         </v-slide-y-transition>
