@@ -14,6 +14,15 @@
     },
     data: () => {
       return {}
+    },
+    mounted () {
+      // this.fetchUserPosts();
+    },
+    methods: {
+      fetchUserPosts() {
+        // $route.params.username
+        // this.$store.dispatch(FETCH_USER_POSTS);
+      }
     }
   })
   export default class Profile extends Vue {}
