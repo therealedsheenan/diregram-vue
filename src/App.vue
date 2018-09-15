@@ -8,6 +8,7 @@
           </span>
           <v-toolbar-title v-text="title"></v-toolbar-title>
         </router-link>
+        <span v-if="isAuthed"> | <a @click="logout">Logout</a></span>
         <!--<router-link to="/about">about</router-link>-->
       </div>
     </v-toolbar>
@@ -18,6 +19,7 @@
 </template>
 
 <script lang="ts">
+  import { mapGetters } from 'vuex';
   import Timeline from './components/Timeline'
 
   export default {
@@ -29,7 +31,21 @@
       return {
         title: 'Diregram'
       }
-    }
+    },
+    computed: {
+      ...mapGetters([
+        'isAuthed'
+      ])
+    },
+    methods: {
+      logout: () => {
+        console.log('logout!');
+        // this.$store.dispatch('logout')
+        //   .then(() => {
+        //     this.$router.push('/login')
+        //   })
+      }
+    },
   }
 </script>
 
