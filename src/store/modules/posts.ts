@@ -1,6 +1,6 @@
-import Api from "../../services/api";
-import * as acts from "../types/actions";
-import * as muts from "../types/mutations";
+import Api from '../../services/api';
+import * as acts from '../types/actions';
+import * as muts from '../types/mutations';
 
 const state = {
   data: [],
@@ -13,13 +13,13 @@ const getters = {
   },
   posts(state: any) {
     return state.data;
-  }
+  },
 };
 
 const actions = {
-  [acts.FETCH_ALL_POSTS]({ commit }, params = "") {
+  [acts.FETCH_ALL_POSTS]({ commit }, params = '') {
     commit(muts.ALL_POSTS_REQUEST);
-    return Api.get("post/all", "")
+    return Api.get('post/all', '')
       .then((data: any) => {
         return commit(muts.ALL_POSTS_SUCCESS, data);
       })
@@ -34,7 +34,7 @@ const mutations = {
   [muts.ALL_POSTS_REQUEST](state: any) {
     state.isLoading = true;
   },
-  [muts.ALL_POSTS_SUCCESS](state: any, payload) {
+  [muts.ALL_POSTS_SUCCESS](state: any, payload: any) {
     state.data = payload.data.posts;
     state.isLoading = false;
   },
