@@ -2,29 +2,29 @@
   <v-container grid-list-xs>
     <v-layout row wrap>
       <v-flex xs10 offset-xs1>
-        <div v-if="isLoading" class="article-preview">
+        <div v-if='isLoading' class='article-preview'>
           Loading posts...
         </div>
-        <v-slide-y-transition mode="out-in">
+        <v-slide-y-transition mode='out-in'>
           <v-layout column align-center>
-            <v-card v-for="post in posts" class="mt-4">
-              <div class="card-link">
-                <div class="card-author">
+            <v-card v-for='post in posts' class='mt-4'>
+              <div class='card-link'>
+                <div class='card-author'>
                   <v-avatar
-                    color="grey lighten-4"
+                    color='grey lighten-4'
                   >
-                    <img src="@/assets/logo.png" alt="avatar">
+                    <img src='@/assets/logo.png' alt='avatar'>
                   </v-avatar>
-                  <router-link v-bind:to="'/profile/' + post.owner._id">
+                  <router-link v-bind:to='"/profile/" + post.owner._id'>
                     <h3>{{ post.owner.username }}</h3>
                   </router-link>
                 </div>
                 <v-img
-                  v-bind:src="uploadAddress + post.image.image"
+                  v-bind:src='uploadAddress + post.image.image'
                 ></v-img>
                 <v-card-title>
                   <div>
-                    <h3 class="headline mt-0">{{ post.title }}</h3>
+                    <h3 class='headline mt-0'>{{ post.title }}</h3>
                     <div>{{ post.caption }}</div>
                   </div>
                 </v-card-title>
@@ -37,13 +37,13 @@
   </v-container>
 </template>
 
-<script lang="ts">
+<script lang='ts'>
   import { mapGetters } from 'vuex';
   import { FETCH_ALL_POSTS } from '@/store/types/actions';
   export default {
     name: 'Timeline',
     data: () => ({
-      uploadAddress: "http://localhost:8000/"
+      uploadAddress: 'http://localhost:8000/'
     }),
     mounted () {
       this.fetchAllPosts();
@@ -62,8 +62,8 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped lang="scss">
+<!-- Add 'scoped' attribute to limit CSS to this component only -->
+<style scoped lang='scss'>
   h3 {
     margin: 40px 0 0;
   }
