@@ -18,6 +18,10 @@ const Api = {
         throw new Error(`[RWV] ApiService ${error}`);
       });
   },
+
+  post(resource: string, params: object) {
+    return Vue.axios.post(`${resource}`, params);
+  },
 };
 
 export default Api;
