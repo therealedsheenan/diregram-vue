@@ -19,7 +19,7 @@ const Api = {
       });
   },
 
-  post(resource: string, params: object) {
+  post(resource: string, params: object, opts = {}) {
     return Vue.axios.post(`${resource}`, params);
   },
 };

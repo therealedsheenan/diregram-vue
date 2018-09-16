@@ -41,12 +41,11 @@
     },
     methods: {
       requestLogin () {
-        console.log('logging in');
         const { email, password } = this;
         this.$store.dispatch(REQUEST_LOGIN, { email, password })
-          .then(() => {
-            console.log('login success!');
-            // this.$router.push('/about')
+          .then((res) => {
+            // console.log(res);
+            // this.$router.push(`/profile/${res.data.username}`)
           })
           .catch((err) => console.log(err));
       },

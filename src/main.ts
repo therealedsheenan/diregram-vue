@@ -14,7 +14,7 @@ Vue.config.productionTip = false;
 
 Vue.prototype.$http = Axios;
 if (getUserToken()) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = getUserToken();
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = `Bearer ${getUserToken()}`;
 }
 
 // initialize api service

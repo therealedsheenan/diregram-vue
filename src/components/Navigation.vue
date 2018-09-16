@@ -10,7 +10,13 @@
           </router-link>
         </v-flex>
         <v-flex align-content-end xs9 class="text-xs-right">
-          <v-btn v-if="isAuthed" color="error" dark @click="logout">Logout</v-btn>
+          <span v-if="isAuthed">
+            <v-dialog v-model="newPostDialog" max-width="500px">
+              <v-btn slot="activator" color="primary" dark>New Post</v-btn>
+              <NewPost v-on:dialog-cancel="newPostDialog = false" />
+            </v-dialog>
+            <v-btn color="error" dark @click="logout">Logout</v-btn>
+          </span>
           <span v-else>
             <v-dialog v-model="loginDialog" max-width="500px">
               <v-btn slot="activator" color="primary" dark>Login</v-btn>
@@ -30,18 +36,21 @@
   import { REQUEST_LOGOUT } from '@/store/types/actions';
   import Login from '@/components/auth/Login';
   import Signup from '@/components/auth/Signup';
+  import NewPost from '@/components/post/New';
 
   export default {
     name: 'Navigation',
     components: {
       Login,
-      Signup
+      Signup,
+      NewPost,
     },
     data: () => {
       return {
         title: 'Diregram',
         loginDialog: false,
-        signupDialog: false
+        signupDialog: false,
+        newPostDialog: false
       }
     },
     computed: {
