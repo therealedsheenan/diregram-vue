@@ -7,14 +7,14 @@ import App from './App.vue';
 import router from './router';
 import store from './store/';
 import Api from './services/api';
+import { getUserToken } from './helpers/auth';
 import './registerServiceWorker';
 
 Vue.config.productionTip = false;
 
 Vue.prototype.$http = Axios;
-const token = localStorage.getItem('token');
-if (token) {
-  Vue.prototype.$http.defaults.headers.common['Authorization'] = token;
+if (getUserToken()) {
+  Vue.prototype.$http.defaults.headers.common['Authorization'] = getUserToken();
 }
 
 // initialize api service
