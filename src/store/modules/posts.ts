@@ -8,7 +8,7 @@ const state = {
 };
 
 const getters = {
-  isLoading(state: any) {
+  postsIsLoading(state: any) {
     return state.isLoading;
   },
   posts(state: any) {
@@ -19,7 +19,7 @@ const getters = {
 const actions = {
   [acts.FETCH_ALL_POSTS]({ commit }, params = '') {
     commit(muts.ALL_POSTS_REQUEST);
-    return Api.get('post/all', '')
+    return Api.get(params ? `user/${params}/posts` : 'post/all')
       .then((data: any) => {
         return commit(muts.ALL_POSTS_SUCCESS, data);
       })

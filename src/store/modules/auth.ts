@@ -1,17 +1,19 @@
 import axios from 'axios';
+
 import Api from '@/services/api';
-import { setUserToken, removeUserToken } from '@/helpers/auth';
+import { setUserToken, removeUserToken, getUserToken } from '@/helpers/auth';
 import * as acts from '../types/actions';
 import * as muts from '../types/mutations';
 
 const state = {
-  token: localStorage.getItem('token') || '',
+  token: getUserToken() || '',
   user: {},
   isAuthenticating: true,
 };
 
 const getters = {
   isAuthed(state: any) {
+    console.log(state.token);
     return !!state.token;
   },
   user(state: any) {

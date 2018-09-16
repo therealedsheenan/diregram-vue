@@ -20,3 +20,8 @@ export const LOGOUT_FAILURE = 'logoutFailure';
 export const SIGNUP_REQUEST = 'signupRequest';
 export const SIGNUP_SUCCESS = 'signupSuccess';
 export const SIGNUP_FAILURE = 'signupFailure';
+
+// profile
+export const PROFILE_REQUEST = 'profileRequest';
+export const PROFILE_SUCCESS = 'profileSuccess';
+export const PROFILE_FAILURE = 'profileFailure';
