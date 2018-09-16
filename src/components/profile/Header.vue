@@ -1,76 +1,59 @@
 <template>
-  <v-container grid-list-xs>
-    <v-layout row wrap>
-      <v-flex xs10 offset-xs1>
-        <div v-if="isLoading" class="article-preview">
-          Loading posts...
-        </div>
-        <v-slide-y-transition mode="out-in">
-          <v-layout column align-center>
-            <v-card v-for="post in posts" class="mt-4">
-              <div class="card-link">
-                <div class="card-author">
-                  <router-link v-bind:to="'/profile/' + post.owner._id">
-                    <h3>{{ post.owner.username }}</h3>
-                  </router-link>
-                </div>
-                <v-img
-                  v-bind:src="uploadAddress + post.image.image"
-                ></v-img>
-                <v-card-title>
-                  <div>
-                    <h3 class="headline mt-0">{{ post.title }}</h3>
-                    <div>{{ post.caption }}</div>
-                  </div>
-                </v-card-title>
-              </div>
-            </v-card>
-          </v-layout>
-        </v-slide-y-transition>
-      </v-flex>
-    </v-layout>
-  </v-container>
+  <!--<div v-if='postsIsLoading' class='article-preview'>-->
+    <!--Loading posts...-->
+  <!--</div>-->
+  <v-layout row wrap class="profile-header">
+    <v-flex justify-center align-center xs3>
+      <img src='@/assets/logo.png' alt='avatar'>
+    </v-flex>
+    <v-flex flex align-center xs9>
+      <div class="profile-info">
+        <h2>{{ profile.username }}</h2>
+        <p>Email: {{ profile.email }}</p>
+        <p>Created at: {{ profile.createdAt }}</p>
+      </div>
+    </v-flex>
+  </v-layout>
 </template>
 
 <script lang="ts">
   import { mapGetters } from 'vuex';
-  import { FETCH_ALL_POSTS } from '@/store/types/actions';
+  import { REQUEST_PROFILE } from '@/store/types/actions';
+
   export default {
     name: 'Header',
     data: () => ({
-      uploadAddress: "http://localhost:8000/"
     }),
     mounted () {
-      this.fetchAllPosts();
+      this.requestUserInfo();
     },
     computed: {
       ...mapGetters([
-        'isLoading',
-        'posts'
+        'profile',
+        'profileIsLoading'
       ])
     },
     methods: {
-      fetchAllPosts () {
-        this.$store.dispatch(FETCH_ALL_POSTS);
+      requestUserInfo () {
+        if (this.$route.params.username) {
+          this.$store.dispatch(REQUEST_PROFILE, this.$route.params.username)
+        }
       },
     }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  h3 {
-    margin: 40px 0 0;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  a {
-    color: #666;
+  .profile-header {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+
+    .profile-info {
+      padding-left: 10px;
+      p {
+        margin: 0;
+      }
+    }
   }
 </style>

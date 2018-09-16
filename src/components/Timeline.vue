@@ -1,8 +1,8 @@
 <template>
   <v-container grid-list-xs>
     <v-layout row wrap>
-      <v-flex xs10 offset-xs1>
-        <div v-if='isLoading' class='article-preview'>
+      <v-flex xs10 md8 offset-md2 lg6 offset-lg3 offset-xs1>
+        <div v-if='postsIsLoading' class='article-preview'>
           Loading posts...
         </div>
         <v-slide-y-transition mode='out-in'>
@@ -15,7 +15,7 @@
                   >
                     <img src='@/assets/logo.png' alt='avatar'>
                   </v-avatar>
-                  <router-link v-bind:to='"/profile/" + post.owner._id'>
+                  <router-link v-bind:to='"/profile/" + post.owner.username'>
                     <h3>{{ post.owner.username }}</h3>
                   </router-link>
                 </div>
@@ -50,7 +50,7 @@
     },
     computed: {
       ...mapGetters([
-        'isLoading',
+        'postsIsLoading',
         'posts'
       ])
     },

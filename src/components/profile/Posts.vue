@@ -1,32 +1,13 @@
 <template>
-  <v-container grid-list-xs>
-    <v-layout row wrap>
-      <v-flex xs10 offset-xs1>
-        <div v-if="isLoading" class="article-preview">
-          Loading posts...
+  <!--<div v-if="isLoading" class="article-preview">-->
+  <!--Loading posts...-->
+  <!--</div>-->
+  <v-container fluid grid-list-lg text-xs-center class="profile-container">
+    <v-layout class="profile-posts" row wrap>
+      <v-flex  grid-list-md v-for="post in posts" :key="`${post._id}`" xs4 class="post-wrapper">
+        <div class="post-image">
+          <img v-bind:src='uploadAddress + post.image.image' alt="">
         </div>
-        <v-slide-y-transition mode="out-in">
-          <v-layout column align-center>
-            <v-card v-for="post in posts" class="mt-4">
-              <div class="card-link">
-                <div class="card-author">
-                  <router-link v-bind:to="'/profile/' + post.owner._id">
-                    <h3>{{ post.owner.username }}</h3>
-                  </router-link>
-                </div>
-                <v-img
-                  v-bind:src="uploadAddress + post.image.image"
-                ></v-img>
-                <v-card-title>
-                  <div>
-                    <h3 class="headline mt-0">{{ post.title }}</h3>
-                    <div>{{ post.caption }}</div>
-                  </div>
-                </v-card-title>
-              </div>
-            </v-card>
-          </v-layout>
-        </v-slide-y-transition>
       </v-flex>
     </v-layout>
   </v-container>
@@ -38,39 +19,48 @@
   export default {
     name: 'Posts',
     data: () => ({
-      uploadAddress: "http://localhost:8000/"
+      uploadAddress: 'http://localhost:8000/'
     }),
     mounted () {
-      this.fetchAllPosts();
+      this.requestUserPosts();
     },
     computed: {
       ...mapGetters([
-        'isLoading',
+        'postsIsLoading',
         'posts'
       ])
     },
     methods: {
-      fetchAllPosts () {
-        this.$store.dispatch(FETCH_ALL_POSTS);
+      requestUserPosts () {
+        if (this.$route.params.username) {
+          this.$store.dispatch(FETCH_ALL_POSTS, this.$route.params.username);
+        }
       },
     }
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-  h3 {
-    margin: 40px 0 0;
+  .profile-posts {
+    margin-top: 30px !important;
   }
-  ul {
-    list-style-type: none;
+
+  .profile-container {
     padding: 0;
   }
-  li {
-    display: inline-block;
-    margin: 0 10px;
+
+  .post-image {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+    }
   }
-  a {
-    color: #666;
+
+  .post-wrapper {
+    overflow: hidden;
   }
 </style>

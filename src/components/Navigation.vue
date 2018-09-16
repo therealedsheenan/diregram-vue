@@ -10,7 +10,7 @@
           </router-link>
         </v-flex>
         <v-flex align-content-end xs9 class="text-xs-right">
-          <span v-if="isAuthed"> | <a @click="logout">Logout</a></span>
+          <v-btn v-if="isAuthed" color="error" dark @click="logout">Logout</v-btn>
           <span v-else>
             <v-dialog v-model="loginDialog" max-width="500px">
               <v-btn slot="activator" color="primary" dark>Login</v-btn>
