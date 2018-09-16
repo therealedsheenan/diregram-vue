@@ -1,16 +1,25 @@
 <template>
-  <div class="home">
-    <Timeline />
-  </div>
+  <v-container grid-list-xs>
+    <v-layout row wrap>
+      <v-flex xs10 md8 offset-md2 lg6 offset-lg3 offset-xs1>
+        <div class="profile">
+          <ProfileHeader />
+          <ProfilePosts />
+        </div>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator';
-  import Timeline from '@/components/Timeline.vue'; // @ is an alias to /src
+  import ProfileHeader from '@/components/profile/Header.vue';
+  import ProfilePosts from '@/components/profile/Posts.vue';
 
   @Component({
     components: {
-      Timeline,
+      ProfileHeader,
+      ProfilePosts
     },
     data: () => {
       return {}
