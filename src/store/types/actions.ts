@@ -1,5 +1,6 @@
 // posts
 export const FETCH_ALL_POSTS =  'fetchAllPosts';
+export const REQUEST_NEW_POST =  'requestNewPost';
 
 // auth
 export const REQUEST_LOGIN = 'requestLogin';

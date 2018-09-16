@@ -4,6 +4,10 @@ export const ALL_POSTS_REQUEST = 'allPostsRequest';
 export const ALL_POSTS_FAILURE = 'allPostsFailure';
 export const ALL_POSTS_SUCCESS = 'allPostsSuccess';
 
+export const NEW_POST_REQUEST = 'newPostRequest';
+export const NEW_POST_FAILURE = 'newPostFailure';
+export const NEW_POST_SUCCESS = 'newPostSuccess';
+
 /* auth */
 
 // login

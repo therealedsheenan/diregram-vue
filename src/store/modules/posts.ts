@@ -28,14 +28,36 @@ const actions = {
         throw new Error(error);
       });
   },
+  [acts.REQUEST_NEW_POST]({ commit }, params = {}) {
+    commit(muts.NEW_POST_REQUEST);
+    return Api.post('post', params)
+      .then((data) => {
+        console.log(data);
+        return commit(muts.NEW_POST_SUCCESS, data);
+      })
+      .catch((error: any) => {
+        commit(muts.NEW_POST_FAILURE, error);
+        throw new Error(error);
+      });
+  },
 };
 
 const mutations = {
   [muts.ALL_POSTS_REQUEST](state: any) {
     state.isLoading = true;
   },
+  [muts.NEW_POST_REQUEST](state: any) {
+    state.isLoading = true;
+  },
   [muts.ALL_POSTS_SUCCESS](state: any, payload: any) {
     state.data = payload.data.posts;
+    state.isLoading = false;
+  },
+  [muts.NEW_POST_SUCCESS](state: any, payload: any) {
+    state.data = {
+      ...state.data,
+      ...payload.data.post,
+    };
     state.isLoading = false;
   },
 };

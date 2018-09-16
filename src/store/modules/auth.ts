@@ -33,7 +33,7 @@ const actions = {
     return Api.post('user/login', { user: params })
       .then((res: any) => {
         setUserToken(res.data.user.token);
-        axios.defaults.headers.common['Authorization'] = res.data.user.token;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.user.token}`;
         return commit(muts.LOGIN_SUCCESS, res.data.user);
       })
       .catch((error: any) => {
@@ -56,7 +56,7 @@ const actions = {
     return Api.post('user/sign-up', { user: params })
       .then((res: any) => {
         setUserToken(res.data.user.token);
-        axios.defaults.headers.common['Authorization'] = res.data.user.token;
+        axios.defaults.headers.common['Authorization'] = `Bearer ${res.data.user.token}`;
         return commit(muts.SIGNUP_SUCCESS, res.data.user);
     })
       .catch((error: any) => {
