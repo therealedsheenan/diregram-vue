@@ -12,7 +12,9 @@ import {
   transitions,
   VCard,
   VImg,
-  VAvatar
+  VAvatar,
+  VDialog,
+  VTextField,
 } from 'vuetify'
 import 'vuetify/src/stylus/app.styl'
 
@@ -29,6 +31,8 @@ Vue.use(Vuetify, {
     VCard,
     VImg,
     VAvatar,
+    VDialog,
+    VTextField,
     transitions
   },
   theme: {
