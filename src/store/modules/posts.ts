@@ -28,7 +28,7 @@ const actions = {
         throw new Error(error);
       });
   },
-  [acts.REQUEST_NEW_POST]({ commit }, params = {}) {
+  [acts.REQUEST_NEW_POST]({ commit }, params) {
     commit(muts.NEW_POST_REQUEST);
     return Api.post('post', params)
       .then((data) => {
