@@ -52,12 +52,9 @@
     },
     methods: {
       requestPost () {
-        const { name, caption, title, image } = this;
         const newPost = new FormData();
-        newPost.name = name;
-        newPost.caption = caption;
-        newPost.title = title;
-        newPost.image = image;
+        // convert data to Formdata
+        Object.keys(this).map((formKey: string) => newPost[formKey] = this[formKey]);
         this.$store.dispatch(REQUEST_NEW_POST, newPost)
           .then((res) => {
             console.log('new post success.')
