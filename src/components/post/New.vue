@@ -11,9 +11,6 @@
               <v-text-field v-model="image" label="Image" required type="file"></v-text-field>
             </v-flex>
             <v-flex xs12>
-              <v-text-field v-model="name" label="Name" required></v-text-field>
-            </v-flex>
-            <v-flex xs12>
               <v-text-field v-model="caption" label="Caption" required></v-text-field>
             </v-flex>
             <v-flex xs12>
@@ -39,7 +36,6 @@
   export default {
     name: 'Login',
     data: () => ({
-      name: '',
       caption: '',
       title: '',
       image: ''
@@ -54,7 +50,7 @@
       requestPost () {
         const newPost = new FormData();
         // convert data to Formdata
-        Object.keys(this).map((formKey: string) => newPost[formKey] = this[formKey]);
+        Object.keys(this).map((formKey: string) => newPost[`post[${formKey}]`] = this[formKey]);
         this.$store.dispatch(REQUEST_NEW_POST, newPost)
           .then((res) => {
             console.log('new post success.')
