@@ -5,6 +5,7 @@ import * as muts from '../types/mutations';
 const state = {
   data: [],
   isLoading: true,
+  status: '',
 };
 
 const getters = {
@@ -32,7 +33,6 @@ const actions = {
     commit(muts.NEW_POST_REQUEST);
     return Api.post('post', params)
       .then((data) => {
-        console.log(data);
         return commit(muts.NEW_POST_SUCCESS, data);
       })
       .catch((error: any) => {
