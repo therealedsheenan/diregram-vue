@@ -54,10 +54,7 @@ const mutations = {
     state.isLoading = false;
   },
   [muts.NEW_POST_SUCCESS](state: any, payload: any) {
-    state.data = {
-      ...state.data,
-      ...payload.data.post,
-    };
+    state.data.unshift(payload.data.post);
     state.isLoading = false;
   },
 };
