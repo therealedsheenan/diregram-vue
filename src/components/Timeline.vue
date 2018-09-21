@@ -7,7 +7,7 @@
         </div>
         <v-slide-y-transition mode='out-in'>
           <v-layout column align-center>
-            <v-card v-for='post in posts' class='mt-4'>
+            <v-card v-for='post in posts' class='mt-4 card'>
               <div class='card-link'>
                 <div class='card-author'>
                   <v-avatar
@@ -77,6 +77,10 @@
   }
   a {
     color: #666;
+  }
+
+  .card {
+    width: 100%;
   }
 
   .card-link {
