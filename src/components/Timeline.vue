@@ -19,9 +19,7 @@
                     <h3>{{ post.owner.username }}</h3>
                   </router-link>
                 </div>
-                <v-img
-                  v-bind:src='uploadAddress + post.image.image'
-                ></v-img>
+                <img v-bind:src='uploadAddress + post.image.image' alt='post image'>
                 <v-card-title>
                   <div>
                     <h3 class='headline mt-0'>{{ post.title }}</h3>
@@ -64,6 +62,10 @@
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped lang='scss'>
+  img {
+    width: 100%;
+    height: auto;
+  }
   h3 {
     margin: 40px 0 0;
   }
