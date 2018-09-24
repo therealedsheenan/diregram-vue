@@ -3,8 +3,8 @@
     <!--Loading posts...-->
   <!--</div>-->
   <v-layout row wrap class="profile-header">
-    <v-flex justify-center align-center xs3>
-      <img src='@/assets/logo.png' alt='avatar'>
+    <v-flex class="avatar" justify-center align-center xs3>
+      <img v-bind:src='uploadAddress + profile.avatar' alt='avatar'>
     </v-flex>
     <v-flex flex align-center xs9>
       <div class="profile-info">
@@ -22,8 +22,11 @@
 
   export default {
     name: 'Header',
-    data: () => ({
-    }),
+    data: () => {
+      return {
+        uploadAddress: 'http://localhost:8000/'
+      }
+    },
     mounted () {
       this.requestUserInfo();
     },
@@ -54,6 +57,16 @@
       p {
         margin: 0;
       }
+    }
+  }
+  .avatar {
+    width: 100%;
+    max-height: 150px;
+    height: 150px;
+
+    img {
+      width: 100%;
+      height: auto;
     }
   }
 </style>

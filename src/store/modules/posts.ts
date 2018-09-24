@@ -46,6 +46,9 @@ const mutations = {
   [muts.ALL_POSTS_REQUEST](state: any) {
     state.isLoading = true;
   },
+  [muts.ALL_POSTS_FAILURE](state: any) {
+    state.isLoading = false;
+  },
   [muts.NEW_POST_REQUEST](state: any) {
     state.isLoading = true;
   },
@@ -55,6 +58,9 @@ const mutations = {
   },
   [muts.NEW_POST_SUCCESS](state: any, payload: any) {
     state.data.unshift(payload.data.post);
+    state.isLoading = false;
+  },
+  [muts.NEW_POST_FAILURE](state: any) {
     state.isLoading = false;
   },
 };

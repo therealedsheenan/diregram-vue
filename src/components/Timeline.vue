@@ -13,7 +13,7 @@
                   <v-avatar
                     color='grey lighten-4'
                   >
-                    <img src='@/assets/logo.png' alt='avatar'>
+                    <img v-bind:src='uploadAddress + post.owner.avatar' alt='avatar'>
                   </v-avatar>
                   <router-link v-bind:to='"/profile/" + post.owner.username'>
                     <h3>{{ post.owner.username }}</h3>
@@ -106,5 +106,9 @@
     text-align: left;
     vertical-align: middle;
     line-height: 2.6;
+  }
+
+  .v-avatar {
+    overflow: hidden;
   }
 </style>
