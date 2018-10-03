@@ -13,7 +13,8 @@
                   <v-avatar
                     color='grey lighten-4'
                   >
-                    <img v-bind:src='uploadAddress + post.owner.avatar' alt='avatar'>
+                    <img v-if="post.owner.avatar" v-bind:src="uploadAddress + post.owner.avatar" alt="avatar">
+                    <img v-else src="@/assets/avatar.jpeg" alt="avatar">
                   </v-avatar>
                   <router-link v-bind:to='"/profile/" + post.owner.username'>
                     <h3>{{ post.owner.username }}</h3>
@@ -36,79 +37,76 @@
 </template>
 
 <script lang='ts'>
-  import { mapGetters } from 'vuex';
-  import { FETCH_ALL_POSTS } from '@/store/types/actions';
-  export default {
-    name: 'Timeline',
-    data: () => ({
-      uploadAddress: 'http://localhost:8000/'
-    }),
-    mounted () {
-      this.fetchAllPosts();
-    },
-    computed: {
-      ...mapGetters([
-        'postsIsLoading',
-        'posts'
-      ])
-    },
-    methods: {
-      fetchAllPosts () {
-        this.$store.dispatch(FETCH_ALL_POSTS);
-      },
+import { mapGetters } from "vuex";
+import { FETCH_ALL_POSTS } from "@/store/types/actions";
+export default {
+  name: "Timeline",
+  data: () => ({
+    uploadAddress: "http://localhost:8000/"
+  }),
+  mounted() {
+    this.fetchAllPosts();
+  },
+  computed: {
+    ...mapGetters(["postsIsLoading", "posts"])
+  },
+  methods: {
+    fetchAllPosts() {
+      this.$store.dispatch(FETCH_ALL_POSTS);
     }
   }
+};
 </script>
 
 <!-- Add 'scoped' attribute to limit CSS to this component only -->
 <style scoped lang='scss'>
-  img {
-    width: 100%;
-    height: auto;
-  }
-  h3 {
-    margin: 40px 0 0;
-  }
-  ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  li {
-    display: inline-block;
-    margin: 0 10px;
-  }
-  a {
-    color: #666;
-  }
+img {
+  width: 100%;
+  height: auto;
+}
+h3 {
+  margin: 40px 0 0;
+}
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+li {
+  display: inline-block;
+  margin: 0 10px;
+}
+a {
+  color: #666;
+}
 
-  .card {
-    width: 100%;
-  }
+.card {
+  width: 100%;
+}
 
-  .card-link {
-    display: block;
-    width: 100%;
-    text-decoration: none;
-  }
+.card-link {
+  display: block;
+  width: 100%;
+  text-decoration: none;
+}
 
-  .v-card__title {
-    text-align: left;
-  }
+.v-card__title {
+  text-align: left;
+}
 
-  .card-author {
-    padding: 10px 20px;
-    display: flex;
-  }
+.card-author {
+  padding: 10px 20px;
+  display: flex;
+}
 
-  .card-author h3 {
-    margin-left: 10px;
-    margin-top: 0;
-    text-align: left;
-    vertical-align: middle;
-    line-height: 2.6;
-  }
+.card-author h3 {
+  margin-left: 10px;
+  margin-top: 0;
+  text-align: left;
+  vertical-align: middle;
+  line-height: 2.6;
+}
 
-  .v-avatar {
-    overflow: hidden;
-  }
+.v-avatar {
+  overflow: hidden;
+}
 </style>
