@@ -49,8 +49,7 @@
         const { username, email, password } = this;
         this.$store.dispatch(REQUEST_SIGNUP, { username, email, password })
           .then(() => {
-            console.log('login success!');
-            this.$router.push('/about');
+            this.$router.push(`/profile/${username}`);
           })
           .catch((err) => console.log(err));
       },

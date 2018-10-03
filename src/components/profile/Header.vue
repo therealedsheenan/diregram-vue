@@ -4,7 +4,8 @@
   <!--</div>-->
   <v-layout row wrap class="profile-header">
     <v-flex class="avatar" justify-center align-center xs3>
-      <img v-bind:src='uploadAddress + profile.avatar' alt='avatar'>
+      <img v-if="profile.avatar" v-bind:src="uploadAddress + profile.avatar" alt="avatar">
+      <img v-else src="@/assets/avatar.jpeg" alt="avatar">
     </v-flex>
     <v-flex flex align-center xs9>
       <div class="profile-info">

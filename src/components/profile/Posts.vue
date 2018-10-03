@@ -1,11 +1,8 @@
 <template>
-  <!--<div v-if="isLoading" class="article-preview">-->
-  <!--Loading posts...-->
-  <!--</div>-->
   <v-container fluid grid-list-lg text-xs-center class="profile-container">
     <v-layout class="profile-posts" row wrap>
       <v-flex  grid-list-md v-for="post in posts" :key="`${post._id}`" xs4 class="post-wrapper">
-        <div class="post-image">
+        <div slot="activator" class="post-image">
           <img v-bind:src='uploadAddress + post.image.image' alt="">
         </div>
       </v-flex>
@@ -16,10 +13,13 @@
 <script lang="ts">
   import { mapGetters } from 'vuex';
   import { FETCH_ALL_POSTS } from '@/store/types/actions';
+  import ShowPost from "@/components/post/Show";
+
   export default {
     name: 'Posts',
+    components: {},
     data: () => ({
-      uploadAddress: 'http://localhost:8000/'
+      uploadAddress: 'http://localhost:8000/',
     }),
     mounted () {
       this.requestUserPosts();

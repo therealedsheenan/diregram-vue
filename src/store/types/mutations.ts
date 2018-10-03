@@ -8,6 +8,10 @@ export const NEW_POST_REQUEST = 'newPostRequest';
 export const NEW_POST_FAILURE = 'newPostFailure';
 export const NEW_POST_SUCCESS = 'newPostSuccess';
 
+export const GET_POST_REQUEST = 'getPostRequest';
+export const GET_POST_FAILURE = 'getPostFailure';
+export const GET_POST_SUCCESS = 'getPostSuccess';
+
 /* auth */
 
 // login
