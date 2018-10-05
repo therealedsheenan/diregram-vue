@@ -25,6 +25,9 @@
                   <div>
                     <h3 class='headline mt-0'>{{ post.title }}</h3>
                     <div>{{ post.caption }}</div>
+                    <div class="like-btn" v-on:click="requestLikePost(post._id)">
+                      <v-icon>favorite_border</v-icon>
+                    </div>
                   </div>
                 </v-card-title>
               </div>
@@ -38,7 +41,7 @@
 
 <script lang='ts'>
 import { mapGetters } from "vuex";
-import { FETCH_ALL_POSTS } from "@/store/types/actions";
+import { FETCH_ALL_POSTS, LIKE_POST } from "@/store/types/actions";
 export default {
   name: "Timeline",
   data: () => ({
@@ -53,6 +56,9 @@ export default {
   methods: {
     fetchAllPosts() {
       this.$store.dispatch(FETCH_ALL_POSTS);
+    },
+    requestLikePost (postId: string|number) {
+      this.$store.dispatch(LIKE_POST,  postId);
     }
   }
 };
@@ -108,5 +114,9 @@ a {
 
 .v-avatar {
   overflow: hidden;
+}
+
+.like-btn:hover {
+  cursor: pointer;
 }
 </style>
