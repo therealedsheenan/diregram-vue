@@ -40,6 +40,17 @@ const actions = {
         throw new Error(error);
       });
   },
+  [acts.LIKE_POST]({ commit }, postId: string|number) {
+    commit(muts.LIKE_POST_REQUEST);
+    return Api.post(`post/${postId}/like`, {})
+      .then((data: object) => {
+        return commit(muts.LIKE_POST_SUCCESS, data);
+      })
+      .catch((error: any) => {
+        commit(muts.LIKE_POST_FAILURE, error);
+        throw new Error(error);
+      });
+  },
 };
 
 const mutations = {
@@ -62,6 +73,15 @@ const mutations = {
   },
   [muts.NEW_POST_FAILURE](state: any) {
     state.isLoading = false;
+  },
+  [muts.LIKE_POST_REQUEST](state: any) {
+
+  },
+  [muts.LIKE_POST_FAILURE](state: any) {
+
+  },
+  [muts.LIKE_POST_SUCCESS](state: any) {
+
   },
 };
 

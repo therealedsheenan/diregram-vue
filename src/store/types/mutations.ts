@@ -12,6 +12,10 @@ export const GET_POST_REQUEST = 'getPostRequest';
 export const GET_POST_FAILURE = 'getPostFailure';
 export const GET_POST_SUCCESS = 'getPostSuccess';
 
+export const LIKE_POST_REQUEST = 'likePostRequest';
+export const LIKE_POST_FAILURE = 'likePostFailure';
+export const LIKE_POST_SUCCESS = 'likePostSuccess';
+
 /* auth */
 
 // login

@@ -2,6 +2,7 @@
 export const FETCH_ALL_POSTS =  'fetchAllPosts';
 export const REQUEST_NEW_POST =  'requestNewPost';
 export const FETCH_POST =  'fetchPost';
+export const LIKE_POST = 'likePost';
 
 // auth
 export const REQUEST_LOGIN = 'requestLogin';
